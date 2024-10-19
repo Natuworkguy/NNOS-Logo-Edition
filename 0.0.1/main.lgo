@@ -1,0 +1,36 @@
+TO STARTINGANIMATION :SCREENSIZE
+  MAKE "DOANIMATION "TRUE
+  IFELSE (:SCREENSIZE = "S) [
+    MAKE "LSP 46
+  ][
+    IFELSE (:SCREENSIZE = "M) [
+      MAKE "LSP 82
+    ][
+      IFELSE (:SCREENSIZE = "L) [
+        MAKE "LSP 118
+      ][
+        MAKE "DOANIMATION "FALSE
+        PRINT [INVALID VALUE FOR SCREENSIZE]
+      ]
+    ]
+  ]
+  IF (:DOANIMATION = "TRUE) [ 
+    CS WINDOW HIDETURTLE
+    repeat :LSP [
+      SETLABELHEIGHT REPCOUNT
+      PU
+      FD REPCOUNT * REPCOUNT / 30
+      LABEL "NNOS
+      BK REPCOUNT * REPCOUNT / 30
+      PD
+      RT 10
+      WAIT 5
+    ]
+    ST
+    WAIT 30
+    CS
+  ]
+END
+TO NNOS
+  STARTINGANIMATION "M
+END
